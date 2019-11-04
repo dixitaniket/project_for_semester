@@ -24,7 +24,7 @@ public class faculty extends member_details {
                 try {
                     member_info(fac_id);
                 } catch (Exception e) {
-                    System.out.println("some problem occured");
+                    System.out.println(e);
                 }
                 ;
                 break;
@@ -35,8 +35,8 @@ public class faculty extends member_details {
 
             case 3:
                 leave_forward lea = new leave_forward();
-                System.out.println("Enter leave type");
-//            Scanner scan=new Scanner(System.in);
+                System.out.println("Enter leave type 1,2 or 3");
+            Scanner scan=new Scanner(System.in);
                 int x = scan.nextInt();
                 System.out.println("enter duration");
                 int y = scan.nextInt();

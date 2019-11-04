@@ -5,8 +5,7 @@ class Leave_server
 {
     final String leave="leave_server.csv";
     public void  train(){
-//        Csv
-    }
+//        Cs    }
 
     public  void enqueue(String str) throws IOException
     {

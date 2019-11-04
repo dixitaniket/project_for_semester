@@ -4,7 +4,7 @@ import java.io.FileReader;
 public class login_details {
 //    private Integer[] id=new Integer[100];
 //    private String[] name=new String[100];
-    private final String login_details="/home/aniket/IdeaProjects/project_for_semester/src/login_details.csv";
+    private final String login_details="login_details.csv";
     private int id_admin=12345;
     private String password="iiitv";
     private String pass_fac="iiitv";
