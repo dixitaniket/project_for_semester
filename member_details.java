@@ -1,20 +1,18 @@
-import java.nio.Buffer;
+ //import java.io.Buffer;
 import java.util.*;
 import java.io.*;
-public class member_details {
+public class member_details extends leave_data {
     private final String login_details="login_details.csv";
-    final String name="/home/aniket/IdeaProjects/project_for_semester/src/member.csv";
-     public boolean add_member(){
-        Scanner obj=new Scanner(System.in);
-
-        try{
-        PrintWriter pw=new PrintWriter(new FileWriter(name,true));
+    final String name="member.csv";
+    public void  add_member() throws IOException{
+        PrintWriter pw=new PrintWriter(new FileWriter("member.csv",true));
         StringBuilder sb=new StringBuilder();
 
         String extra;
-
         System.out.println("Enter ID : ");
+        Scanner obj=new Scanner(System.in);
         String id=obj.nextLine();
+        Integer number=Integer.parseInt(id);
         sb.append(id);
         sb.append(",");
 
@@ -31,6 +29,7 @@ public class member_details {
 //        assumming 0 for faculty and 1 for other staff
         System.out.println("Enter employee category");
         String x=obj.nextLine();
+        int type=Integer.parseInt(x);
         sb.append(x);
         sb.append(",");
 
@@ -43,8 +42,7 @@ public class member_details {
 
         
         System.out.println("Enter Mobile no. : ");
-        int mob=obj.nextInt();
-        extra=obj.nextLine();
+        String mob=obj.nextLine();
         sb.append(mob);
         sb.append(",");
         
@@ -58,13 +56,14 @@ public class member_details {
         pw.flush();
         pw.close();
         add_login_fac(Integer.parseInt(id));
-        return true;
-        
-    }catch(Exception e){
-        // TODO :handle exception 
-//            System.out.println("problem in opening files,please try again later");
-            return false;
+        try{
+            leave(number,type);
         }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
+        // return true;
 }
 
 
@@ -128,9 +127,10 @@ public class member_details {
             String arr[]=line.split(",");
             if(Integer.parseInt(arr[0])==login_id){
                 for(int  i=0;i<7;i++){
-                    System.out.println(arr[i]);
+                    System.out.print(arr[i]+" | ");
 
                 }
+                System.out.println("");
                 flag=1;
                 break;
             }
@@ -139,7 +139,6 @@ public class member_details {
             System.out.println("faculty not found");
         }
     }
-
     public void add_login_fac(int id){
          try {
              Scanner scan=new Scanner(System.in);
@@ -149,37 +148,16 @@ public class member_details {
              sb.append(",");
              System.out.println("enter pass for id holder");
              sb.append(scan.nextLine());
-//             sb.toString();
              pw.write(sb.toString());
              pw.write("\n");
              pw.flush();
              pw.close();
-
-
-
+             return;
          }
          catch (Exception e){
-//             System.out.println("error occured, please try again");;
+             System.out.println("error occured, please try again");
          }
 
 
     }
-
-
-
 }
-//
-//class tester{
-//    public static void main(String[] args) {
-//        member_details mem = new member_details();
-////        mem.add_member();
-//        mem.add_member();
-//        mem.add_member();
-//        try {
-//            mem.dequeue("1212");
-//        }
-//        catch (Exception e){
-//            System.out.println("runners");
-//        }
-//    }
-//}

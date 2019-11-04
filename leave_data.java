@@ -15,19 +15,40 @@ class leave_data {
 
 
 
-    public void  leave() throws IOException {
+    public void  leave(int id,int mem_type) throws IOException {
         PrintWriter pw=new PrintWriter(new FileWriter(file_name,true));
         StringBuilder sb=new StringBuilder();
-        sb.append(id);
-        sb.append(",");
-        if(leave_type==0){
-//            defaulting that the number of leaves is 100 for faculty member;
-            sb.append(100);
+        if(mem_type==0) {
+            sb.append(id);
+            sb.append(",");
+            sb.append(10);
+            sb.append(",");
+            sb.append(20);
+            sb.append(",");
+            sb.append(30);
+            sb.append(",");
+
             pw.write(sb.toString());
             pw.write("\n");
             pw.flush();
             pw.close();
         }
+//        }
+//        sb.append(id);
+//        sb.append(",");
+//        sb.append(10);
+//        sb.append(",");
+//        sb.append(20);
+//        sb.append(",");
+//        sb.append(30);
+//        sb.append(",");
+//
+//        pw.write(sb.toString());
+//        pw.write("\n");
+//        pw.flush();
+//        pw.close();
+//
+
 
     }
     public void show(int id) throws IOException{
@@ -36,7 +57,11 @@ class leave_data {
         while((line=read.readLine())!=null){
             String [] arr=line.split(",");
             if(Integer.parseInt(arr[0])==id){
-                System.out.println("remaining leaves"+arr[1]);
+                for(int i=1;i<arr.length;i++){
+                    System.out.print(arr[i]+" | ");
+
+                }
+                System.out.println("");
 
             }
         }
