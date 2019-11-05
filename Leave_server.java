@@ -8,7 +8,7 @@ class Leave_server
 //        Csv
     }
 
-    public  void enqueue(String str) throws IOException
+    public void enqueue(String str) throws IOException
     {
         FileWriter fw=new FileWriter(leave,true);
         PrintWriter pw=new PrintWriter(fw);
